@@ -36,8 +36,8 @@ def add_contents_to_zip(zip_file, path):
     path = path.rstrip(os.sep)
     with zipfile.ZipFile(zip_file, 'a') as zf:
         for root, dirs, files in os.walk(path):
-            for file in files:
-                file_path = os.path.join(root, file)
+            for file_name in files:
+                file_path = os.path.join(root, file_name)
                 zf.write(file_path, file_path[len(path)+1:])
 
 
@@ -112,6 +112,7 @@ def write_file(file_name, file_contents, indent=None):
     with codecs.open(file_name, 'w', encoding='utf-8') as out_file:
         out_file.write(text_to_write)
 
+
 def get_mime_type(path):
     mime = MimeTypes()
 
@@ -121,11 +122,11 @@ def get_mime_type(path):
     return mime_type
 
 
-def get_files(dir, relative_paths=False, include_directories=False, topdown=False):
+def get_files(dir_name, relative_paths=False, include_directories=False, topdown=False):
     file_list = []
-    for root, dirs, files in os.walk(dir, topdown=topdown):
+    for root, dirs, files in os.walk(dir_name, topdown=topdown):
         if relative_paths:
-            path = root[len(dir)+1:]
+            path = root[len(dir_name) + 1:]
         else:
             path = root
         for filename in files:
@@ -136,11 +137,11 @@ def get_files(dir, relative_paths=False, include_directories=False, topdown=Fals
     return file_list
 
 
-def get_subdirs(dir, relative_paths=False, topdown=False):
+def get_subdirs(dir_name, relative_paths=False, topdown=False):
     dir_list = []
-    for root, dirs, files in os.walk(dir, topdown=topdown):
+    for root, dirs, files in os.walk(dir_name, topdown=topdown):
         if relative_paths:
-            path = os.path.relpath(root, dir)
+            path = os.path.relpath(root, dir_name)
         else:
             path = root
         for dirname in dirs:
