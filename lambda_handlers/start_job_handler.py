@@ -7,6 +7,7 @@ class StartJobHandler(Handler):
 
     def _handle(self, event, context):
         """
+        This handler is triggered by DynamoDB
         :param dict event:
         :param context:
         """

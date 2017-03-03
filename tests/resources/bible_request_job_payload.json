@@ -1,0 +1,9 @@
+{
+  "identifier": "Door43-Catalog/ne-ulb/ed87f2c2fc",
+  "input_format": "usfm",
+  "callback": "unit_test_api_url/client/callback",
+  "output_format": "html",
+  "source": "https://s3-us-west-2.amazonaws.com/pre_convert_bucket/preconvert/ed87f2c2fc.zip",
+  "gogs_user_token": "unit_test_user_token",
+  "resource_type": "ulb"
+}
